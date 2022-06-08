@@ -8,6 +8,10 @@ output_folder = "resultado"
 csv_file = "tabla.csv"
 fuente = "modelo.html"
 
+#### MARCAS DE TEXTO ####
+## Aquí se pueden cambiar las marcas ##
+marcas = ['marcaNombre', 'marcaCargo', 'marcaTelefono', 'marcaMail']
+
 ###### Procesamiento de parámetros ####
 texto_ayuda = "Script que replica un archivo modificándolo con las cadenas que se especifiquen en un csv."
 
@@ -73,7 +77,7 @@ for linea in data:
             telefonos = f'{tlfPrincipal}</div><div>{tlfSecundario}'            
     with open(fuente, 'rt') as modelo:
         for line in modelo:
-            archivo_destino.write(line.replace('marcaNombre', linea[0]).replace('marcaCargo', linea[1]).replace('marcaTelefono', telefonos).replace('marcaMail', linea[4]))
+            archivo_destino.write(line.replace('marcas[0]', linea[0]).replace('marcas[1]', linea[1]).replace('marcas[2]', telefonos).replace('marcas[3]', linea[4]))
         if args.verbose:
             print(f'{output_folder}/{nombre_archivo} creado')
 
